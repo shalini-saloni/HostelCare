@@ -1,30 +1,32 @@
-import { View, Text, StyleSheet } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+import HomeScreen from "./src/screens/student/HomeScreen";
+import ComplaintCard from "./src/components/ComplaintCard";
+import AddComplaint from "./src/screens/student/AddComplaint";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>HostelCare App</Text>
-      <Text style={styles.subtext}>Ready for development!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen 
+          name="Home" 
+          component={HomeScreen} 
+          options={{ title: "Home" }}
+        />
+        <Stack.Screen 
+          name="AddComplaint" 
+          component={AddComplaint} 
+          options={{ title: "Add Complaint" }}
+        />
+        <Stack.Screen 
+          name="ComplaintDetails" 
+          component={ComplaintCard} 
+          options={{ title: "Complaint Details" }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 8,
-  },
-  subtext: {
-    fontSize: 16,
-    color: '#666',
-  },
-});

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'react-native-paper';
 import { StyleSheet, View } from 'react-native';
-import colors from '../utils/colors'; 
+import { COLORS } from '../utils/colors'; 
 
 const CustomButton = ({ 
   title, 
@@ -22,8 +22,12 @@ const CustomButton = ({
         loading={loading}
         disabled={disabled || loading}
         icon={icon}
-        buttonColor={mode === 'contained' ? colors.PRIMARY : undefined}
-        textColor={mode === 'contained' ? colors.WHITE : colors.PRIMARY}
+        buttonColor={mode === 'contained' ? (COLORS?.primary ?? '#2563EB') : undefined}
+        textColor={
+          mode === 'contained'
+            ? (COLORS?.white ?? '#FFFFFF')
+            : (COLORS?.primary ?? '#2563EB')
+        }
         contentStyle={[styles.buttonContent, contentStyle]}
         labelStyle={[styles.buttonLabel, labelStyle]}
       >

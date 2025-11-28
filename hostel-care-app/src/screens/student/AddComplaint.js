@@ -19,7 +19,7 @@ import {
 import * as ImagePicker from 'expo-image-picker';
 import ScreenWrapper from '../../components/ScreenWrapper';
 import CustomButton from '../../components/CustomButton';
-import colors from '../../utils/colors';
+import { COLORS } from '../../utils/colors';
 
 const AddComplaint = ({ navigation }) => {
   const [formData, setFormData] = useState({
@@ -225,12 +225,12 @@ const AddComplaint = ({ navigation }) => {
   };
 
   return (
-    <ScreenWrapper isScrollable={true} backgroundColor={colors.BACKGROUND}>
+    <ScreenWrapper isScrollable={true} backgroundColor={COLORS?.background ?? '#F9FAFB'}>
       <View style={styles.header}>
         <IconButton
           icon="arrow-left"
           size={24}
-          iconColor={colors.PRIMARY}
+          iconColor={COLORS?.primary ?? '#2563EB'}
           onPress={() => navigation.goBack()}
         />
         <Title style={styles.headerTitle}>New Complaint</Title>
@@ -245,8 +245,8 @@ const AddComplaint = ({ navigation }) => {
             value={formData.title}
             onChangeText={(text) => handleInputChange('title', text)}
             mode="outlined"
-            outlineColor={colors.GREY}
-            activeOutlineColor={colors.PRIMARY}
+            outlineColor={COLORS?.border ?? '#E5E7EB'}
+            activeOutlineColor={COLORS?.primary ?? '#2563EB'}
             style={styles.input}
             error={!!errors.title}
             placeholder="e.g., Broken AC, Water Leakage"
@@ -292,7 +292,7 @@ const AddComplaint = ({ navigation }) => {
               <View key={priority} style={styles.radioItem}>
                 <RadioButton.Android
                   value={priority}
-                  color={colors.PRIMARY}
+                  color={COLORS?.primary ?? '#2563EB'}
                 />
                 <Paragraph style={styles.radioLabel}>{priority}</Paragraph>
               </View>
@@ -340,8 +340,8 @@ const AddComplaint = ({ navigation }) => {
               value={formData.roomNumber}
               onChangeText={(text) => handleInputChange('roomNumber', text)}
               mode="outlined"
-              outlineColor={colors.GREY}
-              activeOutlineColor={colors.PRIMARY}
+              outlineColor={COLORS?.border ?? '#E5E7EB'}
+              activeOutlineColor={COLORS?.primary ?? '#2563EB'}
               style={styles.input}
               error={!!errors.roomNumber}
               keyboardType="numeric"
@@ -360,8 +360,8 @@ const AddComplaint = ({ navigation }) => {
             value={formData.description}
             onChangeText={(text) => handleInputChange('description', text)}
             mode="outlined"
-            outlineColor={colors.GREY}
-            activeOutlineColor={colors.PRIMARY}
+            outlineColor={COLORS?.border ?? '#E5E7EB'}
+            activeOutlineColor={COLORS?.primary ?? '#2563EB'}
             style={styles.textArea}
             error={!!errors.description}
             multiline
@@ -386,7 +386,7 @@ const AddComplaint = ({ navigation }) => {
                   style={styles.removeButton}
                   onPress={() => removeImage(index)}
                 >
-                  <IconButton icon="close" size={16} iconColor={colors.WHITE} />
+                  <IconButton icon="close" size={16} iconColor={COLORS?.white ?? '#FFFFFF'} />
                 </TouchableOpacity>
               </View>
             ))}
@@ -396,7 +396,7 @@ const AddComplaint = ({ navigation }) => {
                 style={styles.addImageButton}
                 onPress={showImageOptions}
               >
-                <IconButton icon="camera" size={32} iconColor={colors.PRIMARY} />
+                <IconButton icon="camera" size={32} iconColor={COLORS?.primary ?? '#2563EB'} />
                 <Caption style={styles.addImageText}>Add Image</Caption>
               </TouchableOpacity>
             )}
@@ -434,27 +434,27 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: colors.PRIMARY,
+    color: COLORS?.primary ?? '#2563EB',
   },
   inputContainer: {
     marginBottom: 20,
   },
   input: {
-    backgroundColor: colors.WHITE,
+    backgroundColor: COLORS?.white ?? '#FFFFFF',
   },
   textArea: {
-    backgroundColor: colors.WHITE,
+    backgroundColor: COLORS?.white ?? '#FFFFFF',
     minHeight: 120,
     textAlignVertical: 'top',
   },
   label: {
     fontSize: 16,
     fontWeight: '600',
-    color: colors.TEXT_DARK,
+    color: COLORS?.textPrimary ?? '#111827',
     marginBottom: 8,
   },
   errorText: {
-    color: colors.URGENT,
+    color: COLORS?.urgent ?? '#EF4444',
     marginTop: 4,
     fontSize: 12,
   },
@@ -467,20 +467,20 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 8,
     borderRadius: 20,
-    backgroundColor: colors.WHITE,
+    backgroundColor: COLORS?.white ?? '#FFFFFF',
     borderWidth: 1,
-    borderColor: colors.GREY,
+    borderColor: COLORS?.border ?? '#E5E7EB',
   },
   chipSelected: {
-    backgroundColor: colors.PRIMARY,
-    borderColor: colors.PRIMARY,
+    backgroundColor: COLORS?.primary ?? '#2563EB',
+    borderColor: COLORS?.primary ?? '#2563EB',
   },
   chipText: {
     fontSize: 14,
-    color: colors.TEXT_DARK,
+    color: COLORS?.textPrimary ?? '#111827',
   },
   chipTextSelected: {
-    color: colors.WHITE,
+    color: COLORS?.white ?? '#FFFFFF',
     fontWeight: 'bold',
   },
   radioItem: {
@@ -490,7 +490,7 @@ const styles = StyleSheet.create({
   },
   radioLabel: {
     fontSize: 15,
-    color: colors.TEXT_DARK,
+    color: COLORS?.textPrimary ?? '#111827',
     marginLeft: 8,
   },
   sectionContainer: {
@@ -499,12 +499,12 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: colors.TEXT_DARK,
+    color: COLORS?.textPrimary ?? '#111827',
     marginBottom: 8,
   },
   caption: {
     fontSize: 12,
-    color: colors.TEXT_LIGHT,
+    color: COLORS?.textSecondary ?? '#6B7280',
     marginBottom: 12,
   },
   imagesContainer: {
@@ -526,7 +526,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: -8,
     right: -8,
-    backgroundColor: colors.URGENT,
+    backgroundColor: COLORS?.urgent ?? '#EF4444',
     borderRadius: 12,
     width: 24,
     height: 24,
@@ -539,14 +539,14 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 2,
     borderStyle: 'dashed',
-    borderColor: colors.GREY,
+    borderColor: COLORS?.border ?? '#E5E7EB',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: colors.WHITE,
+    backgroundColor: COLORS?.white ?? '#FFFFFF',
   },
   addImageText: {
     fontSize: 12,
-    color: colors.PRIMARY,
+    color: COLORS?.primary ?? '#2563EB',
     marginTop: -8,
   },
   buttonContainer: {
