@@ -1,8 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import ScreenWrapper from '../components/ScreenWrapper';
 import colors from '../utils/colors';
-import { ScrollView } from 'react-native-gesture-handler';
 
 const HomeScreen = ({ navigation }) => {
   return (
